@@ -7,16 +7,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
      EditText eName,ePass;
-    String user,pass,email;
+    String user="",pass="",email="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         eName=(EditText) findViewById(R.id.eNombre);
         ePass= (EditText) findViewById(R.id.ePassword);
@@ -27,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode==1234 && resultCode==RESULT_OK){
-            user = data.getExtras().getString("kName");//obtengo el extra de RegistroActivity con la llave
+            user = data.getExtras().getString("kName");//obtengo el extra de RegistroActivity con la clave
             pass = data.getExtras().getString("kPass");
             email = data.getExtras().getString("kEmail");
 
@@ -48,18 +50,35 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent= new Intent(getApplicationContext(),Main1Activity.class);
         if(eName.length()==0){
             Toast.makeText(getApplicationContext(),"Ingrese Usuario",Toast.LENGTH_SHORT).show();
-        }else if(eName.getText().toString().equals(user.toString())){
-            ok++;
-            intent.putExtra("kName",eName.getText().toString());
+        }else{    //
+            if(user.length()==0){
+                Toast.makeText(getApplicationContext(),"Usuario no Registrado",Toast.LENGTH_SHORT).show();
+            }else {
+                if(eName.getText().toString().equals(user)){
+                    ok++;
+                    intent.putExtra("kName",eName.getText().toString());
+                }else{
+                    Toast.makeText(getApplicationContext(),"Usuario incorrecto",Toast.LENGTH_SHORT).show();
+                }
+            }
+
         }
 
         if (ePass.length()==0){
             Toast.makeText(getApplicationContext(),"Ingrese contraseña",Toast.LENGTH_SHORT).show();
-        }else if(ePass.getText().toString().equals(pass.toString())){
-            ok++;
-            intent.putExtra("kPass",ePass.getText().toString());
-            intent.putExtra("kMail",email);
-            Log.d("valor de k2",Integer.toString(ok));
+        }else {
+            if(pass.length()==0){
+                Toast.makeText(getApplicationContext(),"Usuario no Registrado",Toast.LENGTH_SHORT).show();
+            }else{
+                if( ePass.getText().toString().equals(pass)){
+                    ok++;
+                    intent.putExtra("kPass",ePass.getText().toString());
+                    intent.putExtra("kMail",email);
+                    Log.d("valor de k2",Integer.toString(ok));
+                }else{
+                    Toast.makeText(getApplicationContext(),"Contraseña incorrecta",Toast.LENGTH_SHORT).show();
+                }
+            }
         }
 
         if (ok>=2){

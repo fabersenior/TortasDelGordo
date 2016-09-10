@@ -8,7 +8,33 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/texturadefondo"
+    android:orientation="vertical"
     tools:context="com.faberospina.tortasdelgordo.Main1Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:src="@drawable/logo_1"
+            android:layout_gravity="left"
+            android:foregroundGravity="left"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textStyle="italic"
+            />
+
+    </LinearLayout>
+
+
 
 
     <ScrollView
@@ -22,12 +48,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:src="@drawable/logo_1"
-                android:layout_gravity="left"
-                android:foregroundGravity="left"/>
+
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -35,24 +56,66 @@
                 android:src="@drawable/logo"
                 />
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/whiscake"/>
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/bizcocho_tradicional"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/whiscake"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:text="@string/whisk"
+                    android:textColor="@color/lightcoral"/>
+
+
+            </LinearLayout>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:src="@drawable/chocolate"/>
+                android:src="@drawable/bizcocho_tradicional"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tra"
+                    android:textColor="@color/lightcoral"/>
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/chocolate"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/chocolate"
+                android:textColor="@color/lightcoral"
+                />
 
 
 
