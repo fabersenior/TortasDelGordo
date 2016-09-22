@@ -20,13 +20,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
+
         eName=(EditText) findViewById(R.id.eNombre);
         ePass= (EditText) findViewById(R.id.ePassword);
+
+        eName.setText("");
+        ePass.setText("");
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        eName.setText("");
+        ePass.setText("");
 
         if (requestCode==1234 && resultCode==RESULT_OK){
             user = data.getExtras().getString("kName");//obtengo el extra de RegistroActivity con la clave
