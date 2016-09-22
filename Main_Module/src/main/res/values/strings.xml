@@ -14,7 +14,17 @@
     <string name="IngresoCorreo">Ingrese Correo</string>
     <string name="aceptar">Aceptar</string>
     <string name="cancel">Cancelar</string>
+    <string name="maria">Maria luisa de Arequipe, la rica y tradicional de la abuela; ¡ La felicidad se comparte ! recomienda este producto a un amigo</string>
+    <string name="bizco">Bizcocho de novia con brevas pasas, nueces, coco, esencias y especias.  Envinada en su punto justo.  La tradicional de siempre.  En tus fiestas con un vino espumoso o en la tarde con un delicioso café negro, será la compañía perfecta.  Disfrútala siempre de una manera diferente.</string>
+    <string name="arequipe">Rico bizcochuelos sabor a chocolate.  Disfrutarás en su interior de una capa de crema con sabor a arequipe con crocante coco rallado y otra capa con sabor a chocolate. Está cubierta con una suave crema sabor caramelo.</string>
+    <string name="tolu">Deliciosa combinación de  bizcochuelos sabor a vainilla y sabor a chocolate.  Disfrutarás en su interior de una capa de crema de chocolate y otra capa de crema con fresas caladas.  Está cubierta con una crema sabor a chocolate. </string>
+    <string name="cholom">Bizcochuelos de chocolate combinado con una sensacional crema de chocolate.  Está cubierta con trufex - sorpréndete con esta rica crema con sabor a chocolate y avellanas.-</string>
+    <string name="codigo369">Tu muñeco preferido de caricatura se realiza en una estatuilla de pura  torta.  Selecciona tu sabor preferido entre vainilla, fresa, chocolate y naranja.</string>
+    <string name="team">Somos la Marca que hace realidad la torta de tus sueños, acompañando tus momentos de alegría…</string>
     <string name="chocolate">Chocolate,Deliciosa torta sabor a chocolate, rellena y cubierta con un encantador arequipe achocolatado.  </string>
     <string name="whisk">Whiscake, Rica torta tipo postre, remojada en en crema de whisky Cubierta con una deliciosa crema de sabor avainillado con toque de licor. Una manera diferente de brindar. </string>
     <string name="tra">Bizcocho Tradicional, Bizcocho de novia con brevas pasas, nueces, coco, esencias y especias.  Envinada en su punto justo.  La tradicional de siempre.  En tus fiestas con un vino espumoso o en la tarde con un delicioso café negro, será la compañía perfecta.  Disfrútala siempre de una manera diferente.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

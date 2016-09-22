@@ -65,6 +65,14 @@ public class Main1Activity extends AppCompatActivity {
             case R.id.publicidad :
                 break;
 
+            case R.id.catalogo :
+                Intent intent1= new Intent(this,CatalogoActivity.class);
+                intent1.putExtra("kUsuario",usuario); //tname.getText().toString()
+                intent1.putExtra("kPassword",password);
+                intent1.putExtra("kMail2",correo);
+                startActivity(intent1);
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);

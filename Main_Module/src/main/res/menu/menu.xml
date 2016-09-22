@@ -13,6 +13,11 @@
 
     </item>
 
+    <item
+        android:id="@+id/catalogo"
+        android:title="Catalogo">
+        </item>
+
 
 
 </menu>
