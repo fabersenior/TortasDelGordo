@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(eName.getText().toString().equals(user) || eName.getText().toString().equals(prefs.getString("kName","07"))){//
                     ok++;
                     //intent.putExtra("kName",eName.getText().toString());
+                    //Estp es un comentario
                 }else{
                     Toast.makeText(getApplicationContext(),"Usuario incorrecto",Toast.LENGTH_SHORT).show();
                 }
