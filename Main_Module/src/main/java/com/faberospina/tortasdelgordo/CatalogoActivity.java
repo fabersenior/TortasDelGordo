@@ -1,6 +1,7 @@
 package com.faberospina.tortasdelgordo;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,9 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
-public class CatalogoActivity extends AppCompatActivity {
+public class CatalogoActivity extends NavegationActivity {
 
     private ViewPager mViewPager;
     String MiEmail,MiUser,MiPass;
@@ -23,7 +25,10 @@ public class CatalogoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catalogo);
+       // setContentView(R.layout.activity_catalogo);
+
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.activity_catalogo, contentFrameLayout);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -32,7 +37,7 @@ public class CatalogoActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        rep();
+        //rep();
 
         ActionBar.TabListener tabListener = new ActionBar.TabListener(){
 
@@ -106,8 +111,14 @@ public class CatalogoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id= item.getItemId();
 
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
         switch (id){
             case R.id.miperfil:
+
+/*                SupermanFragment fragment = new SupermanFragment();
+                ft.replace(android.R.id.content, fragment).commit();*/
 
                // Toast.makeText(getApplicationContext(),"Opcion Invalida",Toast.LENGTH_SHORT);
                 Intent intent = new Intent(this,PerfilActivity.class);// crea un nuevo intent
