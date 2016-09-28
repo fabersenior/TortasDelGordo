@@ -8,11 +8,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 
 public class Main1Activity extends NavegationActivity {
 
     String usuario,password,correo;
+
   /*  SharedPreferences prefs;
     SharedPreferences.Editor editor;*/
 
@@ -25,6 +28,8 @@ public class Main1Activity extends NavegationActivity {
 
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_main1, contentFrameLayout);
+
+
 
         if (getIntent() == null) {
 

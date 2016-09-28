@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         if(eName.length()==0){
             Toast.makeText(getApplicationContext(),"Ingrese Usuario",Toast.LENGTH_SHORT).show();
         }else{    //
-            if(user.length()==0 || prefs.getString("kName","07").length()==0){
+            if(prefs.getString("kName","07").length()==0){//user.length()==0 ||
                 Toast.makeText(getApplicationContext(),"Usuario no Registrado",Toast.LENGTH_SHORT).show();
             }else {
                 if(eName.getText().toString().equals(user) || eName.getText().toString().equals(prefs.getString("kName","07"))){//
@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         if (ePass.length()==0){
             Toast.makeText(getApplicationContext(),"Ingrese contraseña",Toast.LENGTH_SHORT).show();
         }else {
-            if(pass.length()==0 || prefs.getString("kPass","07").length()==0){
+            if( prefs.getString("kPass","07").length()==0){//pass.length()==0 ||
                 Toast.makeText(getApplicationContext(),"Usuario no Registrado",Toast.LENGTH_SHORT).show();
             }else{
                 if( ePass.getText().toString().equals(pass) || ePass.getText().toString().equals(prefs.getString("kPass","07"))){

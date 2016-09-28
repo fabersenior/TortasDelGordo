@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 public class NavegationActivity extends AppCompatActivity {
 
-    private String[] opciones = new String[] {"Publicidad", "Mi perfil", "Catalogo","Cerra"};
+    private String[] opciones = new String[] {"Publicidad", "Mi perfil", "Catalogo","Promociones","Cerra"};
     private DrawerLayout drawerLayout;
     private ListView listView;
     private ActionBarDrawerToggle drawerToggle;
@@ -53,7 +53,12 @@ public class NavegationActivity extends AppCompatActivity {
                     case(2):  Intent intent1 = new Intent(NavegationActivity.this, CatalogoActivity.class);
                         startActivity(intent1);
                         finish();break;//fragment = new Print3dFragment(); break;
-                    case(3):Intent intent3 = new Intent(NavegationActivity.this, LoginActivity.class);
+                    case(3):Intent intent4 = new Intent(NavegationActivity.this, Promo_Activity.class);
+                        //intent3.putExtra("kName",);
+                        startActivity(intent4);
+                        finish();break;
+
+                    case 4:Intent intent3 = new Intent(NavegationActivity.this, LoginActivity.class);
                         //intent3.putExtra("kName",);
                         startActivity(intent3);
                         finish();break;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/texturadefondo"
     android:id="@+id/contenedorPrincipal"
     tools:context="com.faberospina.tortasdelgordo.NavegationActivity">
 
@@ -13,10 +13,7 @@
         android:layout_height="match_parent"
         android:id="@+id/contenedorFrame">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_sin_fondo"/>
+
     </FrameLayout>
 
     <ListView
