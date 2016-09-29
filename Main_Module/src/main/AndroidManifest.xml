@@ -21,7 +21,8 @@
         <activity android:name=".PerfilActivity" />
         <activity android:name=".CatalogoActivity" />
         <activity android:name=".NavegationActivity" />
-        <activity android:name=".Promo_Activity"></activity>
+        <activity android:name=".Promo_Activity" />
+        <activity android:name=".showActivity"></activity>
     </application>
 
 </manifest>

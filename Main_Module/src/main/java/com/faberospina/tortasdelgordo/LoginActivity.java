@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (ok>=2){
             startActivity(intent);
+            finish();
         }
 
     }

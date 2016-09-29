@@ -1,12 +1,14 @@
 package com.faberospina.tortasdelgordo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -41,6 +43,16 @@ public class Promo_Activity extends NavegationActivity {
         lstnombres = (ListView) findViewById(R.id.lst);
 
         lstnombres.setAdapter(adapter);
+
+        lstnombres.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(getApplicationContext(),showActivity.class);// crea un nuevo intent
+                intent.putExtra("kPos",i); //tname.getText().toString()
+                startActivity(intent);
+            }
+        });
     }
 
     class Adapter extends ArrayAdapter<Lista_entrada> {
@@ -70,6 +82,8 @@ public class Promo_Activity extends NavegationActivity {
 
             return (item);
         }
+
+
     }
 }
 
