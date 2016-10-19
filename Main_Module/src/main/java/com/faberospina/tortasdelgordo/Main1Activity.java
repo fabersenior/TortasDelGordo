@@ -1,7 +1,9 @@
 package com.faberospina.tortasdelgordo;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,16 @@ import android.widget.ListView;
 public class Main1Activity extends NavegationActivity {
 
     String usuario,password,correo;
+    ContentValues dataBD;
+    SQLiteDatabase db;
+    ContactosSQLHelper contactosSQLHelper;
+    ProductosSQLHelp productosSQLHelp;
+    MisFavoritosSQLHelp misFavoritosSQLHelp;
+
+/*    String sqlCreate = "CREATE TABLE Productos2 (" +  "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "producto TEXT," +
+            "descripcion INTEGER," +
+            "precio TEXT)";*/
 
   /*  SharedPreferences prefs;
     SharedPreferences.Editor editor;*/
@@ -28,6 +40,18 @@ public class Main1Activity extends NavegationActivity {
 
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.activity_main1, contentFrameLayout);
+
+        // CREA BASE DE DATOS
+        contactosSQLHelper = new ContactosSQLHelper(getApplicationContext(),"TortasBD",null,1);
+        productosSQLHelp = new ProductosSQLHelp(getApplicationContext(),"TortasBD",null,1);
+        misFavoritosSQLHelp = new MisFavoritosSQLHelp(getApplicationContext(),"TortasBD",null,1);
+
+                //CREA BASE DE DATOS EDITABLES
+        db = contactosSQLHelper.getWritableDatabase();
+        db= productosSQLHelp.getWritableDatabase();
+        db = misFavoritosSQLHelp.getWritableDatabase();
+
+        //db.execSQL(sqlCreate);
 
 
 
