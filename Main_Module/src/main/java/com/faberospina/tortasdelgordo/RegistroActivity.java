@@ -17,6 +17,8 @@ public class RegistroActivity extends AppCompatActivity {
 
     private EditText eName,ePass,ePass2,eEmail;
     private  String pass,correo;
+
+    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"LoginBD",null,1);
 /*
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     SharedPreferences.Editor editor;*/
@@ -123,6 +125,15 @@ public class RegistroActivity extends AppCompatActivity {
             intent.putExtra("kEmail",correo);
            // editor.putString("kEmail",correo);
             SavePreferences("kEmail",correo);
+
+            if(UDB.getUsser(eName.getText().toString()).getId()<0) {
+                UDB.AddUsser(eName.getText().toString(),pass,correo);
+            }else{
+                String uu="el usuario ya existe";
+                Toast.makeText(RegistroActivity.this,uu, Toast.LENGTH_SHORT).show();
+
+            }
+
             ok++;//4
             Log.d("valor k:",Integer.toString(ok));
         }

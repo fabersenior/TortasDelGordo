@@ -18,6 +18,13 @@ public class Lista_entrada {
         this.info=info;
     }
 
+    public void Editlista(int idImagen,String nombre, int precio, String info){
+        this.idImagen=idImagen;
+        this.nombre=nombre;
+        this.precio=precio;
+        this.info=info;
+    }
+
     public int getIdImagen() {
         return idImagen;
     }

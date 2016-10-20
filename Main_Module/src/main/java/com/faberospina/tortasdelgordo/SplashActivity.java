@@ -16,10 +16,22 @@ public class SplashActivity extends AppCompatActivity {
     private static final  long SPLAS_DELAY=3000;
     String name,pass,correo;
 
+    private  int LOG;
+
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        prefs= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor=prefs.edit();
+
+        LOG=prefs.getInt("Logged",-1);
+
+        final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"TortasBD",null,1);
 
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
@@ -30,7 +42,8 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                if (name.length()!=0 || correo.length()!=0 || pass.length()!=0){
+                if (LOG==1){
+
                     Intent intent = new Intent(getApplicationContext(),Main1Activity.class);
                     startActivity(intent);
                     finish();
