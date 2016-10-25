@@ -1,6 +1,9 @@
 package com.faberospina.tortasdelgordo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +19,20 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText eName,ePass,ePass2,eEmail;
     private  String pass,correo;
 
+    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"TortasBD",null,1);
+/*
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+    SharedPreferences.Editor editor;*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
+/*        prefs = getPreferences(MODE_PRIVATE);
+        editor = prefs.edit();*/
+
 
         eName = (EditText) findViewById(R.id.eUser);
         ePass = (EditText) findViewById(R.id.ePass);
@@ -69,6 +81,8 @@ public class RegistroActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Nombre Vacio",Toast.LENGTH_SHORT).show();
         }else{
             intent.putExtra("kName",eName.getText().toString());
+            SavePreferences("kName",eName.getText().toString());
+
             ok++;
         }
 
@@ -79,6 +93,8 @@ public class RegistroActivity extends AppCompatActivity {
         }else{
             pass=ePass.getText().toString();
             intent.putExtra("kPass",pass);
+            //editor.putString("kPass",pass);
+
             ok++;
         }
         if(ePass2.length()==0){
@@ -91,6 +107,8 @@ public class RegistroActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Password correct", Toast.LENGTH_SHORT)
                         .show();
                 intent.putExtra("kPass",pass);
+                //editor.putString("kPass",pass);
+                SavePreferences("kPass",pass);
                 ok++;//3
 
             }else{
@@ -106,12 +124,25 @@ public class RegistroActivity extends AppCompatActivity {
         }else{
             correo=eEmail.getText().toString();
             intent.putExtra("kEmail",correo);
+           // editor.putString("kEmail",correo);
+            SavePreferences("kEmail",correo);
+
+            if(UDB.getUsser(eName.getText().toString()).getId()<0) {
+                UDB.AddUsser(eName.getText().toString(),pass,correo);
+            }else{
+                String uu="el usuario ya existe";
+                Toast.makeText(RegistroActivity.this,uu, Toast.LENGTH_SHORT).show();
+
+            }
+
             ok++;//4
             Log.d("valor k:",Integer.toString(ok));
         }
 
         if (ok>=4){
             setResult(RESULT_OK,intent);
+
+
             finish();
         }
 
@@ -127,4 +158,21 @@ public class RegistroActivity extends AppCompatActivity {
         //startActivity(intent);
 
     }
+
+    private void SavePreferences(String key, String value){
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+         SharedPreferences prefs  = getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(key, value);
+        //Toast.makeText(getApplicationContext(),prefs.getString("kName","08:00"),Toast.LENGTH_SHORT).show();
+        editor.commit();
+/*        Intent sd=new Intent(this,Secongtess.class);
+        startActivity(sd);*/
+    }
+
+
+
+
+
+
 }
