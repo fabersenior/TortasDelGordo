@@ -21,17 +21,11 @@ public class showActivity extends AppCompatActivity {
     String uu;
     CheckBox CBF;
 
-    private final static String usuario="usuario";
-    private final static String password="password";
-    private final static String correo="correo";
-    private final static String jumplis="no";
-
     SharedPreferences prefs;
-    SharedPreferences.Editor editor;
-    String usuario2,password2,correo2,jp;
 
-    final MisFavoritosSQLHelp FDB = new MisFavoritosSQLHelp(this,"favoritosBD",null,1);
-    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"LoginBD",null,1);
+    String usuario2,password2,correo2;
+
+    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"TortasBD",null,1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +37,10 @@ public class showActivity extends AppCompatActivity {
         BSF  = (Button) findViewById(R.id.savefav);
         CBF  = (CheckBox) findViewById(R.id.checkfav);
 
+        BSF.setVisibility(View.INVISIBLE);
+
         prefs = getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
+
 
 
         correo2 = prefs.getString("kEmail","07");
@@ -57,22 +54,24 @@ public class showActivity extends AppCompatActivity {
 
         pos=bundle.getInt("kPos");
         prod=pos+1;
-        CBF.setChecked(FDB.getFavs(UDB.getUsser(usuario2).getId(),prod).getId()>0);
+        CBF.setChecked(UDB.getFavs(UDB.getUsser(usuario2).getId(),prod).getId()>0);
         Log.d("ADebugTag", "Usuario: " + UDB.getUsser(usuario2).getId());
         Log.d("ADebugTag", "posicion: " + prod);
-        Log.d("ADebugTag", "Value: " + FDB.getFavs(UDB.getUsser(usuario2).getId(),pos+1).getId());
+        Log.d("ADebugTag", "Value: " + UDB.getFavs(UDB.getUsser(usuario2).getId(),pos+1).getId());
         BSF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
                 if(CBF.isChecked()){
-                    FDB.AddFav(UDB.getUsser(usuario2).getId(),prod);
+                    UDB.AddFav(UDB.getUsser(usuario2).getId(),prod);
                     uu ="añadido a favoritos";
+
                     Toast.makeText(showActivity.this, uu, Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    FDB.eraseFav(UDB.getUsser(usuario2).getId(),pos+1);
+                    UDB.eraseFav(UDB.getUsser(usuario2).getId(),pos+1);
                     uu = "este producto ya no hace parte e sus favoritos";
+
                     Toast.makeText(showActivity.this, uu, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -110,4 +109,6 @@ public class showActivity extends AppCompatActivity {
 
 
     }
+
+
 }

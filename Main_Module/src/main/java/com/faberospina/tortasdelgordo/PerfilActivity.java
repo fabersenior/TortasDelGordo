@@ -1,5 +1,6 @@
 package com.faberospina.tortasdelgordo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -22,6 +23,7 @@ public class PerfilActivity extends NavegationActivity {
     String MiUser,MiEmail,MiPass;
     TextView tUser,tMail,tPass;
     private ViewPager mViewPagerp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,8 +126,8 @@ public class PerfilActivity extends NavegationActivity {
 
     public  void rep(){
         //Bundle extras = getIntent().getExtras();
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+       SharedPreferences  prefs = getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
        // String  data = prefs.getString("name", "08:00") ;
 
         MiEmail = prefs.getString("kEmail","07");

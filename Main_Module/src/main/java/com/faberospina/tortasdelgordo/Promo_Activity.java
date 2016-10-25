@@ -19,6 +19,9 @@ public class Promo_Activity extends NavegationActivity {
 
     final String[] nombres=new String[]{"whiscake","Bizcocho Tradicional","Chocolate"};
     ListView lstnombres;
+    String P1,P2,P3,P4,P5,P6,I1,I2,I3,I4,I5,I6;
+    int V1,V2,V3,V4,V5,V6;
+    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"TortasBD",null,1);
 
     private Lista_entrada[] datos= new Lista_entrada[]{
             new Lista_entrada(R.drawable.bizcocho_tradicional,"Bizcocho Tradicional",50000,"Rico Bizcocho Tradicional a 2x1"),
@@ -38,6 +41,21 @@ public class Promo_Activity extends NavegationActivity {
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.contenedorFrame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.list_promociones, contentFrameLayout);
 
+        P1=UDB.getProd(1).getNamep();I1=UDB.getProd(1).getInfo();
+        P2=UDB.getProd(2).getNamep();I2=UDB.getProd(2).getInfo();
+        P3=UDB.getProd(3).getNamep();I3=UDB.getProd(3).getInfo();
+        P4=UDB.getProd(4).getNamep();I4=UDB.getProd(4).getInfo();
+        P5=UDB.getProd(5).getNamep();I5=UDB.getProd(5).getInfo();
+        P6=UDB.getProd(6).getNamep();I6=UDB.getProd(6).getInfo();
+        V1=UDB.getProd(1).getPrice();V2=UDB.getProd(2).getPrice();V3=UDB.getProd(3).getPrice();
+        V4=UDB.getProd(4).getPrice();V5=UDB.getProd(5).getPrice();V6=UDB.getProd(6).getPrice();
+
+        datos[0].Editlista(P1,V1,I1);
+        datos[1].Editlista(P2,V2,I2);
+        datos[2].Editlista(P3,V3,I3);
+        datos[3].Editlista(P4,V4,I4);
+        datos[4].Editlista(P5,V5,I5);
+//        datos[5].Editlista(P6,V6,I6);
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,nombres);
         Adapter adapter= new Adapter(getApplicationContext(),datos);
         lstnombres = (ListView) findViewById(R.id.lst);
@@ -72,7 +90,13 @@ public class Promo_Activity extends NavegationActivity {
             nombre.setText(datos[position].getNombre());
 
             TextView price= (TextView) item.findViewById(R.id.tPrecio);
-            price.setText(Integer.toString(datos[position].getPrecio()));
+            if(datos[position].getPrecio()>0) {
+                price.setText(" $" + Integer.toString(datos[position].getPrecio()));
+            }
+            else{
+                price.setText("");
+            }
+            //price.setText(Integer.toString(datos[position].getPrecio()));
 
             TextView info= (TextView) item.findViewById(R.id.tInfo);
             info.setText(datos[position].getInfo());

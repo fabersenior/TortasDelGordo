@@ -35,9 +35,9 @@ public class PerfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
-        //prefs = getActivity().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
+        prefs = getActivity().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        //prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         //prefs = getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
         //Recupera los valores de usuario y contraseña guardados en la actividad de SignUp
 /*        usuario1= prefs.getString(usuario,"");

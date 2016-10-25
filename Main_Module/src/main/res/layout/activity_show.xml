@@ -29,8 +29,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:text="favorito"
-            android:textSize="23dp"
+            android:text=" A Favorito"
+            android:textSize="20sp"
+            android:textStyle="italic"
+
+            android:textColor="@color/lightcoral"
+
             android:id="@+id/checkfav"/>
 
         <Button
@@ -38,7 +42,10 @@
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:text="Guardar"
-            android:background="@drawable/texturadefondo"
+            android:textSize="20sp"
+            android:textStyle="italic"
+
+            android:background="@color/lightblue"
             android:id="@+id/savefav"/>
 
     </LinearLayout>

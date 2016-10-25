@@ -1,5 +1,6 @@
 package com.faberospina.tortasdelgordo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -26,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        prefs= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        prefs  = getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
         editor=prefs.edit();
 
         LOG=prefs.getInt("Logged",-1);

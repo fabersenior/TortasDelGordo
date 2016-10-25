@@ -1,5 +1,6 @@
 package com.faberospina.tortasdelgordo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -18,7 +19,7 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText eName,ePass,ePass2,eEmail;
     private  String pass,correo;
 
-    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"LoginBD",null,1);
+    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"TortasBD",null,1);
 /*
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     SharedPreferences.Editor editor;*/
@@ -159,8 +160,8 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void SavePreferences(String key, String value){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+         SharedPreferences prefs  = getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(key, value);
         //Toast.makeText(getApplicationContext(),prefs.getString("kName","08:00"),Toast.LENGTH_SHORT).show();

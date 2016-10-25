@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
-    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"LoginBD",null,1);
+    final ContactosSQLHelper UDB = new ContactosSQLHelper(this,"TortasBD",null,1);
 
 
     @Override
@@ -52,7 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         
 
         if (requestCode==1234 && resultCode==RESULT_OK){
-            prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            //prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            prefs =getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
             editor = prefs.edit();
             user = data.getExtras().getString("kName");//obtengo el extra de RegistroActivity con la clave
             pass = data.getExtras().getString("kPass");
@@ -75,8 +76,9 @@ public class LoginActivity extends AppCompatActivity {
     public void BtnIngresarOnClick(View view) {
         int ok=0;
         Intent intent= new Intent(getApplicationContext(),Main1Activity.class);
-        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
+        //prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        prefs =getApplicationContext().getSharedPreferences("com.sp.main_preferences", Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
         if(eName.length()==0 ){
             Toast.makeText(getApplicationContext(),"Ingrese Usuario",Toast.LENGTH_SHORT).show();
@@ -85,9 +87,9 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Usuario no Registrado",Toast.LENGTH_SHORT).show();
             }else {
                 if(eName.getText().toString().equals(user) || eName.getText().toString().equals(prefs.getString("kName","07") )
-                        || UDB.getUsser(eName.getText().toString()).getId()<0){//
+                        || UDB.getUsser(eName.getText().toString()).getId()>=1){//
                     ok++;
-                    //intent.putExtra("kName",eName.getText().toString());
+                    intent.putExtra("kName",eName.getText().toString());
                     //Estp es un comentario
                 }else{
                     Toast.makeText(getApplicationContext(),"Usuario incorrecto",Toast.LENGTH_SHORT).show();
@@ -105,8 +107,8 @@ public class LoginActivity extends AppCompatActivity {
                 if( ePass.getText().toString().equals(pass) || ePass.getText().toString().equals(prefs.getString("kPass","07"))
                         || ePass.getText().toString().equals(UDB.getUsser(eName.getText().toString()).getPass()) ){
                     ok++;
-                    //intent.putExtra("kPass",ePass.getText().toString());
-                    //intent.putExtra("kMail",email);
+                    intent.putExtra("kPass",ePass.getText().toString());
+                    intent.putExtra("kMail",email);
                     Log.d("valor de k2",Integer.toString(ok));
                 }else{
                     Toast.makeText(getApplicationContext(),"Contraseña incorrecta",Toast.LENGTH_SHORT).show();

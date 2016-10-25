@@ -1,5 +1,10 @@
 package com.faberospina.tortasdelgordo;
 
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantLock;
+
+import static java.lang.reflect.Array.get;
+
 /**
  * Created by Faber on 27/09/2016.
  */
@@ -9,10 +14,17 @@ public class Lista_entrada {
     private String nombre;
     private int precio;
     private  String info;
+    private volatile transient Object[] array;
 
 
     public Lista_entrada(int idImagen, String nombre, int precio, String info){
         this.idImagen=idImagen;
+        this.nombre=nombre;
+        this.precio=precio;
+        this.info=info;
+    }
+
+    public void Editlista(String nombre, int precio, String info){
         this.nombre=nombre;
         this.precio=precio;
         this.info=info;
@@ -24,6 +36,8 @@ public class Lista_entrada {
         this.precio=precio;
         this.info=info;
     }
+
+
 
     public int getIdImagen() {
         return idImagen;
